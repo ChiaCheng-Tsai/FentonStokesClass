@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1484710553 source:c:\users\user\dropbox\myresearch\fourier\fourier(code)\fourier.cpp
+	"FentonInout.h"
+	"Fourier.h"
+
+1484717474 c:\users\user\dropbox\myresearch\fourier\fourier(code)\fentoninout.h
+	<math.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+
+1484719127 c:\users\user\dropbox\myresearch\fourier\fourier(code)\fourier.h
+	<math.h>
+	<stdio.h>
+	<process.h>
+	<string.h>
+	<conio.h>
+	<stdlib.h>
+	<assert.h>
+	"FentonInout.h"
+	"FentonSolve.h"
+
+1484289838 c:\users\user\dropbox\myresearch\fourier\fourier(code)\fentonsolve.h
+	<math.h>
+	<stdio.h>
+

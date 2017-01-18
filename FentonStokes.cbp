@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="FentonStokes" />
+		<Option pch_mode="2" />
+		<Option default_target="Release" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Stokes">
+				<Option output="./Stokes" prefix_auto="1" extension_auto="1" />
+				<Option object_output="./obj" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Fourier">
+				<Option output="./Fourier" prefix_auto="1" extension_auto="1" />
+				<Option object_output="./obj" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Accuracy.txt">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Convergence.dat">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Data.dat">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="FentonInout.h" />
+		<Unit filename="FentonSolve.h">
+			<Option target="Fourier" />
+		</Unit>
+		<Unit filename="Flowfield(Fourier).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Flowfield(Stokes).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Fourier.cpp">
+			<Option target="Fourier" />
+		</Unit>
+		<Unit filename="Fourier.h">
+			<Option target="Fourier" />
+		</Unit>
+		<Unit filename="Points.dat">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Solution(Fourier).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Solution(Stokes).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Stokes.cpp">
+			<Option target="Stokes" />
+		</Unit>
+		<Unit filename="Stokes.h">
+			<Option target="Stokes" />
+		</Unit>
+		<Unit filename="Surface(Fourier).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Surface(Stokes).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

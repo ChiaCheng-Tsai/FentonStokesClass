@@ -1,0 +1,214 @@
+Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current
+0.20	H/d
+Period	Measure of length: "Wavelength" or "Period"
+3 	    Value of that length: L/d or T(g/d)^1/2 respectively
+1		Current criterion (1 or 2)
+0.0		Current magnitude, (dimensionless) ubar/(gd)^1/2
+20		Number of Fourier components or Order of Stokes/cnoidal theory
+5		Number of height steps to reach H/d
+FINISH
+
+Fenton 1985 Stokes paper with notional H/d and current
+0.3	H/d
+Wavelength	Measure of length: "Wavelength" or "Period"
+8 	    Value of that length: L/d or T(g/d)^1/2 respectively
+1		Current criterion (1 or 2)
+0.0		Current magnitude, (dimensionless) ubar/(gd)^1/2
+20		Number of Fourier components or Order of Stokes/cnoidal theory
+1		Number of height steps to reach H/d
+FINISH
+
+Le Mehaute Divoky & Lin, Fig. 8
+0.492
+Period
+22.47
+2
+0
+30	16
+3
+FINISH
+
+Duncan Ward May 2014
+0.450	H/d
+Period	Measure of length: "Wavelength" or "Period"
+8.544	Value of that length: L/d or T(g/d)^1/2 respectively
+1		Current criterion (1 or 2)
+0.143		Current magnitude, (dimensionless) ubar/(gd)^1/2
+20		Number of Fourier components or Order of Stokes/cnoidal theory
+4		Number of height steps to reach H/d
+FINISH
+
+Systematic examination of accuracy
+0.2759	H/d
+Wavelength	Measure of length: "Wavelength" or "Period"
+2	Value of that length: L/d or T(g/d)^1/2 respectively
+1		Current criterion (1 or 2)
+0.0		Current magnitude, (dimensionless) ubar/(gd)^1/2
+20		Number of Fourier components or Order of Stokes/cnoidal theory
+40		Number of height steps to reach H/d
+FINISH
+
+Pedro Bueno
+0.412	H/d
+Period	Measure of length: "Wavelength" or "Period"
+6.55	Value of that length: L/d or T(g/d)^1/2 respectively
+1		Current criterion (1 or 2)
+0.0		Current magnitude, (dimensionless) ubar/(gd)^1/2
+20		Number of Fourier components or Order of Stokes/cnoidal theory
+10		Number of height steps to reach H/d
+FINISH
+
+
+Test case of a low long wave with large current for comparison between Fourier and cnoidal
+0.3
+Period
+20
+1
+0.1	A very large current, about 1/10 of wave speed
+30	18
+1
+FINISH
+
+Cokelet A6, 0.50
+0.4302324
+Wavelength
+12.06799
+1
+0.
+20
+4
+FINISH
+
+Cokelet A6, 0.70
+finite wavelength Euler
+0.557627 11.964139 0.
+5 1 20
+FINISH
+
+Le Mehaute Divoky & Lin, Fig. 9
+0.548
+Period
+27.24
+2
+0
+30
+4
+FINISH
+
+
+Le Mehaute Divoky & Lin, Fig. 8
+0.492
+Period
+22.47
+2
+0
+30	16
+3
+FINISH
+
+Fernández
+0.2849
+Period
+21.308
+1
+0.036 0.043
+20
+2
+FINISH
+
+Fernández
+0.2849
+Period
+21.308 Wavelength 23.263
+2
+0.043 0.036
+20
+2
+FINISH
+
+Le Mehaute Divoky & Lin, Fig. 2
+0.434
+Period
+8.59
+2
+0
+30	10
+4
+Le Mehaute Divoky & Lin, Fig. 3
+0.420
+Period
+15.85
+2
+0
+30	12
+1
+Le Mehaute Divoky & Lin, Fig. 4
+0.389
+Period
+22.47
+2
+0
+30	14
+3
+Le Mehaute Divoky & Lin, Fig. 5
+0.433
+Period
+27.22
+2
+0
+30	18
+4
+Le Mehaute Divoky & Lin, Fig. 6
+0.499
+Period
+8.58
+2
+0
+30	12
+1
+Le Mehaute Divoky & Lin, Fig. 7
+0.522
+Period
+15.85
+2
+0
+30	14
+2
+Le Mehaute Divoky & Lin, Fig. 8
+0.492
+Period
+22.47
+2
+0
+30	16
+3
+Le Mehaute Divoky & Lin, Fig. 9
+0.548
+Period
+27.24
+2
+0
+30	19
+4
+FINISH
+
+Le Mehaute Divoky & Lin, Fig. 10
+0.462
+Period
+11.85
+2
+0
+30	19
+4
+FINISH
+
+Le Mehaute Divoky & Lin, Fig. 11
+0.433
+Period
+27.22
+2
+0
+30	19
+4
+FINISH
+

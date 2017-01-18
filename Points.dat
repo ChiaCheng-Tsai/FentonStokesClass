@@ -1,0 +1,5 @@
+Control output for graph plotting
+50	Number of points on free surface (clustered near crest)
+16	Number of velocity profiles over half a wavelength to print out
+20	Number of vertical points in each profile
+
