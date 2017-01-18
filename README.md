@@ -6,5 +6,8 @@ For the Stokes solution, it is extended from the 5th-ordered solution of Fenton 
 
 And for the Fourier wave, it is simply an objected-oriented revision.
 
+by CC Tsai (http://cctsai.wixsite.com/mhlab)
+
 Reference:
+
 Fenton, J.D. (1985) ”A fifth-order Stokes theory for steady waves”, J. Waterway Port Coastal and Ocean Engineering 111, 216-234
