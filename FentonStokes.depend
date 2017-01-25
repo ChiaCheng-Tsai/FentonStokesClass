@@ -26,3 +26,85 @@
 	<math.h>
 	<stdio.h>
 
+1485153352 source:c:\users\user\dropbox\myresearch\fentonstokes\cnoidal.cpp
+	"FentonInout.h"
+	"Cnoidal.h"
+
+1485246746 c:\users\user\dropbox\myresearch\fentonstokes\fentoninout.h
+	<math.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"FentonHeaders.h"
+	"FentonElliptic.h"
+
+1485003538 c:\users\user\dropbox\myresearch\fentonstokes\fentonheaders.h
+
+1485238491 c:\users\user\dropbox\myresearch\fentonstokes\cnoidal.h
+	<math.h>
+	<stdio.h>
+	<process.h>
+	<string.h>
+	<conio.h>
+	<stdlib.h>
+	<assert.h>
+	"FentonInout.h"
+	"FentonElliptic.h"
+
+1485083040 c:\users\user\dropbox\myresearch\fentonstokes\fentonelliptic.h
+	<math.h>
+	"FentonHeaders.h"
+
+1485153421 source:c:\users\user\dropbox\myresearch\fentonstokes\fourier.cpp
+	"FentonInout.h"
+	"Fourier.h"
+
+1485246879 c:\users\user\dropbox\myresearch\fentonstokes\fourier.h
+	<math.h>
+	<stdio.h>
+	<process.h>
+	<string.h>
+	<conio.h>
+	<stdlib.h>
+	<assert.h>
+	"FentonHeaders.h"
+	"FentonInout.h"
+	"FentonSolve.h"
+
+1484289838 c:\users\user\dropbox\myresearch\fentonstokes\fentonsolve.h
+	<math.h>
+	<stdio.h>
+
+1485241711 source:c:\users\user\desktop\fentonstokes\cnoidal.cpp
+	"FentonInout.h"
+	"Cnoidal.h"
+
+1485308446 c:\users\user\desktop\fentonstokes\fentoninout.h
+	<math.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"FentonHeaders.h"
+	"FentonElliptic.h"
+
+1485003538 c:\users\user\desktop\fentonstokes\fentonheaders.h
+
+1485083040 c:\users\user\desktop\fentonstokes\fentonelliptic.h
+	<math.h>
+	"FentonHeaders.h"
+
+1485307989 c:\users\user\desktop\fentonstokes\cnoidal.h
+	<math.h>
+	<stdio.h>
+	<process.h>
+	<string.h>
+	<conio.h>
+	<stdlib.h>
+	<assert.h>
+	"FentonInout.h"
+	"FentonElliptic.h"
+

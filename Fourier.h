@@ -1,7 +1,7 @@
 
 #ifndef Fourier_H
 #define Fourier_H
-// Stokes theory calculations
+// Fourier theory calculations
 
 #include <math.h>
 #include <stdio.h>
@@ -12,10 +12,10 @@
 #include <assert.h>
 #define	ANSI
 
-#define	pi 3.14159265358979324
-
+#include "FentonHeaders.h"
 #include "FentonInout.h"
 #include "FentonSolve.h"
+#include "FourierStokesData.h"
 
 class FourierClass
 {
@@ -25,45 +25,72 @@ class FourierClass
   double criter;
   double *coeff,*cosa,*rhs1,*rhs2,*sina,*FourierTanh;
   double **sol;
+  FourierStokesData FSD;
  public:
-  FourierClass(FentonInoutClass<FourierClass> & );
+  FourierClass(){};
+  FourierClass(FentonInout<FourierClass> & );
+  ~FourierClass();
   void init(int Inoutn,char* InoutCase,double* Inoutz,double InoutCurrent,int InoutCurrent_criterion);
   double Eqns(double *rhs,int Inoutn,char* InoutCase,double* Inoutz,double InoutCurrent,int InoutCurrent_criterion);
   double Newton(int Inoutn,char* InoutCase,double* Inoutz,double InoutCurrent,int InoutCurrent_criterion);
+
+  double Get_kd(){return FSD.kd;};
+  double Get_kh(){return FSD.kh;};
+  double Get_kH(){return FSD.kH;};
+  double Get_SU(){return FSD.SU;};
+  double Get_L(){return FSD.L;};
+  double Get_H(){return FSD.H;};
+  int Get_n(){return FSD.n;};
+  double Get_z(int i){return FSD.z[i];};
+  void Output(FILE *Solution){FSD.Output(Solution);};
+  double Surface(double x){return FSD.Surface(x);};
+  void Point(double X,double y,
+             double &phi,double &u,double &v,double &dphidt,double &dudt,double &dvdt,double &ut,double &vt,
+             double &ux,double &vx,double &uy,double &vy,double &Pressure,double &Bernoulli_check)
+             {FSD.Point(X,y,phi,u,v,dphidt,dudt,dvdt,ut,vt,ux,vx,uy,vy,Pressure,Bernoulli_check);};
+
+  // dummy member function
+  double Get_h(){assert(false);return 0;};
+  double Get_R_d(){assert(false);return 0;};
+  double Get_c(){assert(false);return 0;};
+  double eta_h(double x){assert(false);return 0;};
+  double u_h(double x, double Y){assert(false);return 0;};
+  double v_h(double x, double Y){assert(false);return 0;};
+
 };
 
 // read data (n, Case, T, L, MaxH, Current_criterion, Current) from Inout
 // and set Method, z[], B[], Y[], H, kd, kH, and SU to Inout
 
-FourierClass::FourierClass(FentonInoutClass<FourierClass> & Inout)
+// Height, number, crit, and nstep are additionally needed compared with StokesClass
+
+FourierClass::FourierClass(FentonInout<FourierClass> & Inout)
 {
  int	i, j, iter, m, ns;
- double	dhe, dho, error, **CC;
+ double	dhe, dho, error;
  double sum;
 
- if(Inout.n==1)	assert(false); // This is for testing first-order theories
+ FSD.Current=Inout.Current;
+ FSD.Current_criterion=Inout.Current_criterion;
+ FSD.H=Inout.H;
+ FSD.T=Inout.T;
+ FSD.L=Inout.L;
+ FSD.n=Inout.n;
 
- sprintf(Inout.Method, "Fourier method with %d terms in series", Inout.n);
- printf( "\n# Solution by Fourier method with %d terms in series", Inout.n);
+ strcpy(FSD.Case,Inout.Case);
+ strcpy(FSD.Title,Inout.Title);
 
- num=2*Inout.n+10;
+ sprintf(Inout.Method, "Fourier method with %d terms in series", FSD.n);
+ sprintf(FSD.Method, "Fourier method with %d terms in series", FSD.n);
+ printf( "\n# Solution by Fourier method with %d terms in series", FSD.n);
+
+ num=2*FSD.n+10;
  dhe=Inout.Height/Inout.nstep;
  dho=Inout.MaxH/Inout.nstep;
 
- CC = new double* [num+1];
-
- for(i=0;i<num+1;i++)
-  CC[i] = new double [num+1];
-
- for ( j=1; j <=num ; ++j)
- {
-  for ( i=1; i <=num ; ++i)CC[j][i] = 0.;
-  CC[j][j] = 1.;
- }
-
- Inout.z = new double[num+1];
- Inout.Y = new double[Inout.n+1]; // bug fixed by Tsai
- Inout.B = new double[Inout.n+1];
+ FSD.z = new double[num+1];
+ FSD.Y = new double[FSD.n+1]; // bug fixed by Tsai
+ FSD.B = new double[FSD.n+1];
 
 // see page 359 in Fenton (1988) for the definition of z and B
 // see Eq. (3.5) in Fenton (1999) for the definition of B
@@ -72,9 +99,9 @@ FourierClass::FourierClass(FentonInoutClass<FourierClass> & Inout)
  rhs1 = new double[num+1];
  rhs2 = new double[num+1];
  coeff = new double[num+1];
- cosa = new double[2*Inout.n+1];
- sina = new double[2*Inout.n+1];
- FourierTanh = new double[Inout.n+1];
+ cosa = new double[2*FSD.n+1];
+ sina = new double[2*FSD.n+1];
+ FourierTanh = new double[FSD.n+1];
 
  sol = new double* [num+1];
  for(i=0;i<num+1;i++)
@@ -85,35 +112,35 @@ FourierClass::FourierClass(FentonInoutClass<FourierClass> & Inout)
  {
   height=ns*dhe;
   Hoverd=ns*dho;
-  fprintf(Inout.monitor,"\n\nHeight step %2d of %2d", ns, Inout.nstep);
+  printf("\n\nHeight step %2d of %2d", ns, Inout.nstep);
 
 //	Calculate initial linear solution
   if(ns <= 1)
-    init(Inout.n,Inout.Case,Inout.z,Inout.Current,Inout.Current_criterion);
+    init(FSD.n,FSD.Case,FSD.z,FSD.Current,FSD.Current_criterion);
 //	Or, extrapolate for next wave height, if necessary
 
   else
    for ( i=1 ; i <= num ; i++ )
-    Inout.z[i]=2.*sol[i][2]-sol[i][1];
+    FSD.z[i]=2.*sol[i][2]-sol[i][1];
 
 //	Commence iterative solution
   for (iter=1 ; iter <= Inout.number ; iter++ )
   {
-   fprintf(Inout.monitor,"\nIteration%3d:", iter);
+   printf("\nIteration%3d:", iter);
 
 //	Calculate right sides of equations and differentiate numerically
 //	to obtain Jacobian matrix, then solve matrix equation
 
-   error = Newton(Inout.n,Inout.Case,Inout.z,Inout.Current,Inout.Current_criterion);
+   error = Newton(FSD.n,FSD.Case,FSD.z,FSD.Current,FSD.Current_criterion);
 
 //	Convergence criterion satisfied?
 
-   fprintf(stdout," Mean of corrections to free surface: %8.1e", error);
+   printf(" Mean of corrections to free surface: %8.1e", error);
 
    if(ns == Inout.nstep)	criter = 1.e-10 ;
    else			criter = Inout.crit;
 
-   if((error < criter * fabs(Inout.z[1]))  && iter > 1 ) break;
+   if((error < criter * fabs(FSD.z[1]))  && iter > 1 ) break;
    if(iter == Inout.number)
    {
     fprintf(stdout,"\nNote that the program still had not converged to the degree specified\n");
@@ -123,27 +150,38 @@ FourierClass::FourierClass(FentonInoutClass<FourierClass> & Inout)
 
    if(ns == 1)
     for ( i=1 ; i<=num ; i++ )
-     sol[i][2] = Inout.z[i];
+     sol[i][2] = FSD.z[i];
    else
     for ( i=1 ; i<=num ; i++ )
     {
      sol[i][1] = sol[i][2];
-     sol[i][2] = Inout.z[i];
+     sol[i][2] = FSD.z[i];
     }
   }
 
 //	Fourier coefficients (for surface elevation by slow Fourier transform)
 
-  for ( Inout.Y[0] = 0., j = 1 ; j <= Inout.n ; j++ )
+  for ( FSD.Y[0] = 0., j = 1 ; j <= FSD.n ; j++ )
   {
-   Inout.B[j]=Inout.z[j+Inout.n+10];
-   sum = 0.5*(Inout.z[10]+Inout.z[Inout.n+10]*pow(-1.,(double)j));
-   for ( m = 1 ; m <= Inout.n-1 ; m++ )
-    sum += Inout.z[10+m]*cosa[(m*j)%(Inout.n+Inout.n)];
-   Inout.Y[j] = 2. * sum / Inout.n;
+   FSD.B[j]=FSD.z[j+FSD.n+10];
+   sum = 0.5*(FSD.z[10]+FSD.z[FSD.n+10]*pow(-1.,(double)j));
+   for ( m = 1 ; m <= FSD.n-1 ; m++ )
+    sum += FSD.z[10+m]*cosa[(m*j)%(FSD.n+FSD.n)];
+   FSD.Y[j] = 2. * sum / FSD.n;
   }
  } // End stepping through wave heights
 
+ FSD.L = 2*Fenton_pi/FSD.z[1];
+ FSD.H = FSD.z[2]/FSD.z[1];
+
+}
+
+// **************************************************
+// CALCULATE INITIAL SOLUTION FROM LINEAR WAVE THEORY
+// **************************************************
+
+FourierClass::~FourierClass()
+{
  delete [] rhs1;
  delete [] rhs2;
  delete [] coeff;
@@ -151,19 +189,10 @@ FourierClass::FourierClass(FentonInoutClass<FourierClass> & Inout)
  delete [] sina;
  delete [] FourierTanh;
 
- for(i=0;i<num+1;i++)
+ for(int i=0;i<num+1;i++)
   delete [] sol[i];
  delete [] sol;
-
- for(i=0;i<num+1;i++)
-  delete [] CC[i];
- delete [] CC;
-
 }
-
-// **************************************************
-// CALCULATE INITIAL SOLUTION FROM LINEAR WAVE THEORY
-// **************************************************
 
 void FourierClass::init(int Inoutn,char* InoutCase,double* Inoutz,double InoutCurrent,int InoutCurrent_criterion)
 {
@@ -172,17 +201,17 @@ void FourierClass::init(int Inoutn,char* InoutCase,double* Inoutz,double InoutCu
 
  iff(InoutCase,Period)
  {
-  a=4.*pi*pi*height/Hoverd;
+  a=4.*Fenton_pi*Fenton_pi*height/Hoverd;
   b=a/sqrt(tanh(a));
   t=tanh(b);
   Inoutz[1]=b+(a-b*t)/(t+b*(1.-t*t));
  }
  else
-  Inoutz[1]=2.*pi*height/Hoverd;
+  Inoutz[1]=2.*Fenton_pi*height/Hoverd;
 
  Inoutz[2]=Inoutz[1]*Hoverd;
  Inoutz[4]=sqrt(tanh(Inoutz[1]));
- Inoutz[3]=2.*pi/Inoutz[4];
+ Inoutz[3]=2.*Fenton_pi/Inoutz[4];
 
  if(InoutCurrent_criterion==1)
  {
@@ -204,10 +233,10 @@ void FourierClass::init(int Inoutn,char* InoutCase,double* Inoutz,double InoutCu
 
  for( i=1 ; i<=Inoutn ; i++ )
  {
-  cosa[i]=cos(i*pi/Inoutn);
-  cosa[i+Inoutn]=cos((i+Inoutn)*pi/Inoutn);
-  sina[i]=sin(i*pi/Inoutn);
-  sina[i+Inoutn]=sin((i+Inoutn)*pi/Inoutn);
+  cosa[i]=cos(i*Fenton_pi/Inoutn);
+  cosa[i+Inoutn]=cos((i+Inoutn)*Fenton_pi/Inoutn);
+  sina[i]=sin(i*Fenton_pi/Inoutn);
+  sina[i+Inoutn]=sin((i+Inoutn)*Fenton_pi/Inoutn);
   Inoutz[Inoutn+i+10]=0.;
   Inoutz[i+10]=0.5*Inoutz[2]*cosa[i];
  }
@@ -230,11 +259,11 @@ double FourierClass::Eqns(double *rhs,int Inoutn,char* InoutCase,double* Inoutz,
  rhs[1]=Inoutz[2]-Inoutz[1]*Hoverd;
 
  iff(InoutCase,Wavelength)
-  rhs[2]=Inoutz[2]-2.*pi*height;
+  rhs[2]=Inoutz[2]-2.*Fenton_pi*height;
  else
   rhs[2]=Inoutz[2]-height*Inoutz[3]*Inoutz[3];
 
- rhs[3]=Inoutz[4]*Inoutz[3]-pi-pi;
+ rhs[3]=Inoutz[4]*Inoutz[3]-Fenton_pi-Fenton_pi;
  rhs[4]=Inoutz[5]+Inoutz[7]-Inoutz[4];
  rhs[5]=Inoutz[6]+Inoutz[7]-Inoutz[4];
 

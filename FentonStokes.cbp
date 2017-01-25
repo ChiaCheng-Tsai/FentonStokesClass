@@ -31,6 +31,18 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Cnoidal">
+				<Option output="./Cnoidal" prefix_auto="1" extension_auto="1" />
+				<Option object_output="./obj" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -39,15 +51,28 @@
 		<Unit filename="Accuracy.txt">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="Cnoidal.cpp">
+			<Option target="Cnoidal" />
+		</Unit>
+		<Unit filename="Cnoidal.h">
+			<Option target="Cnoidal" />
+		</Unit>
 		<Unit filename="Convergence.dat">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Data.dat">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="FentonElliptic.h">
+			<Option target="Cnoidal" />
+		</Unit>
+		<Unit filename="FentonHeaders.h" />
 		<Unit filename="FentonInout.h" />
 		<Unit filename="FentonSolve.h">
 			<Option target="Fourier" />
+		</Unit>
+		<Unit filename="Flowfield(Cnoidal).res">
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Flowfield(Fourier).res">
 			<Option target="&lt;{~None~}&gt;" />
@@ -61,7 +86,14 @@
 		<Unit filename="Fourier.h">
 			<Option target="Fourier" />
 		</Unit>
+		<Unit filename="FourierStokesData.h">
+			<Option target="Stokes" />
+			<Option target="Fourier" />
+		</Unit>
 		<Unit filename="Points.dat">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Solution(Cnoidal).res">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Solution(Fourier).res">
@@ -75,6 +107,9 @@
 		</Unit>
 		<Unit filename="Stokes.h">
 			<Option target="Stokes" />
+		</Unit>
+		<Unit filename="Surface(Cnoidal).res">
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Surface(Fourier).res">
 			<Option target="&lt;{~None~}&gt;" />

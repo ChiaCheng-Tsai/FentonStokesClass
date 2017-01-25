@@ -4,7 +4,7 @@
 
 int main()
 {
- FentonInoutClass<FourierClass> Inout((char *)"Data.dat",(char *)"Convergence.dat",(char *)"Points.dat");
+ FentonInout<FourierClass> Inout(FourierSolution,(char *)"Data.dat",(char *)"Convergence.dat",(char *)"Points.dat");
  Inout.Solve();
  Inout.Output((char *)"Surface(Fourier).res",(char *)"Flowfield(Fourier).res",(char *)"Solution(Fourier).res",(char *)"Accuracy.txt");
  printf("\nTouch key to continue "); getch();

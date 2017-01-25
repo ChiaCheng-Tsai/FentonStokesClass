@@ -1,4 +1,4 @@
-# Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current
+# Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for Stokes and FourPeriod
 
 # Height/Depth: 0.200  Length/Depth:   1.65  Dimensionless Period T*sqrt(g/d):   3.00
 # (A height of  85% of the maximum of H/d = 0.234 for this length)

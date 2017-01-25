@@ -1,4 +1,4 @@
-# Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current
+# Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for Stokes and FourPeriod
 
 # Solution by 7-order Stokes theory
 

@@ -13,22 +13,49 @@
 #define	ANSI
 
 #include "FentonInout.h"
+#include "FourierStokesData.h"
 
 class StokesClass
 {
  private:
   double C[8], D[8], E[8], e[8];
+  FourierStokesData FSD;
  public:
-  StokesClass(FentonInoutClass<StokesClass> & );
+  StokesClass(){};
+  StokesClass(FentonInout<StokesClass> & );
   double F(double kd,int Inoutn,double InoutT,double InoutH,double InoutCurrent,int InoutCurrent_criterion);
   void CDE(double kd);
   void zBY(double kd,int Inoutn,double* Inoutz,double* InoutB,double* InoutY);
+
+  double Get_kd(){return FSD.kd;};
+  double Get_kh(){return FSD.kh;};
+  double Get_kH(){return FSD.kH;};
+  double Get_SU(){return FSD.SU;};
+  double Get_L(){return FSD.L;};
+  double Get_H(){return FSD.H;};
+  int Get_n(){return FSD.n;};
+  double Get_z(int i){return FSD.z[i];};
+  void Output(FILE *Solution){FSD.Output(Solution);};
+  double Surface(double x){return FSD.Surface(x);};
+  void Point(double X,double y,
+             double &phi,double &u,double &v,double &dphidt,double &dudt,double &dvdt,double &ut,double &vt,
+             double &ux,double &vx,double &uy,double &vy,double &Pressure,double &Bernoulli_check)
+             {FSD.Point(X,y,phi,u,v,dphidt,dudt,dvdt,ut,vt,ux,vx,uy,vy,Pressure,Bernoulli_check);};
+
+  // dummy member function
+  double Get_h(){assert(false);return 0;};
+  double Get_R_d(){assert(false);return 0;};
+  double Get_c(){assert(false);return 0;};
+  double eta_h(double x){assert(false);return 0;};
+  double u_h(double x, double Y){assert(false);return 0;};
+  double v_h(double x, double Y){assert(false);return 0;};
+
 };
 
 // read data (n, Case, T, L, MaxH, Current_criterion, Current) from Inout
-// and set Method, z[], B[], Y[], H, kd, kH, and SU to Inout
+// and set Method, z[], B[], Y[], H, kd, kH, and SU to FSD
 
-StokesClass::StokesClass(FentonInoutClass<StokesClass> & Inout)
+StokesClass::StokesClass(FentonInout<StokesClass> & Inout)
 {
 
  double rhs, rhs1, rhs2, kd1, kd2, kFM, omega, delta;
@@ -36,97 +63,110 @@ StokesClass::StokesClass(FentonInoutClass<StokesClass> & Inout)
 
  if(Inout.n>7)Inout.n=7;
 
- sprintf(Inout.Method, "%d-order Stokes theory", Inout.n);
- printf( "\n# Solution by %d-order Stokes theory", Inout.n);
+ FSD.Current=Inout.Current;
+ FSD.Current_criterion=Inout.Current_criterion;
+ FSD.H=Inout.H;
+ FSD.T=Inout.T;
+ FSD.L=Inout.L;
+ FSD.n=Inout.n;
 
- Inout.z = new double [2*Inout.n+10+1]; // +1 by Tsai
- Inout.Y = new double [Inout.n+1]; // +1 by Tsai
- Inout.B = new double [Inout.n+1]; // +1 by Tsai
+ strcpy(FSD.Case,Inout.Case);
+ strcpy(FSD.Title,Inout.Title);
+
+ sprintf(FSD.Method, "%d-order Stokes theory", FSD.n);
+ sprintf(Inout.Method, "%d-order Stokes theory", FSD.n);
+ printf( "\n# Solution by %d-order Stokes theory", FSD.n);
+
+ FSD.z = new double [2*FSD.n+10+1]; // +1 by Tsai
+ FSD.Y = new double [FSD.n+1]; // +1 by Tsai
+ FSD.B = new double [FSD.n+1]; // +1 by Tsai
 // see page 359 in Fenton (1988) for the definition of z and B
 // see Eq. (3.5) in Fenton (1999) for the definition of B
 // see page 363 in Fenton (1988) for the definition of Y
 
- Inout.H = Inout.MaxH;
+ FSD.H = Inout.MaxH;
 
- iff(Inout.Case,Wavelength)
+ iff(FSD.Case,Wavelength)
 	{
- 	 Inout.kd = 2. * pi / Inout.L;
-	 Inout.kH = Inout.kd * Inout.H ;
-	 CDE(Inout.kd);
+ 	 FSD.kd = 2. * Fenton_pi / FSD.L;
+	 FSD.kH = FSD.kd * FSD.H ;
+	 CDE(FSD.kd);
 	}
 
 // Solve dispersion relation using bisection
 
- iff(Inout.Case,Period)
+ iff(FSD.Case,Period)
 	{
-	 omega = 2*pi/Inout.T;
+	 omega = 2*Fenton_pi/FSD.T;
 	// Fenton & McKee for initial estimate
 	 kFM = omega*omega*pow(1/tanh(pow(omega,1.5)),(2./3.));
 	 kd1 = 0.5*kFM;
 	 kd2 = 2*kFM;
 	 delta = 1.;
-	 Inout.kd = kFM; // added by Tsai
+	 FSD.kd = kFM; // added by Tsai
 	 CDE(kd1);
-	 rhs1 = F(kd1,Inout.n,Inout.T,Inout.H,Inout.Current,Inout.Current_criterion);
+	 rhs1 = F(kd1,FSD.n,FSD.T,FSD.H,FSD.Current,FSD.Current_criterion);
 	 CDE(kd2);
-	 rhs2 = F(kd2,Inout.n,Inout.T,Inout.H,Inout.Current,Inout.Current_criterion);
+	 rhs2 = F(kd2,FSD.n,FSD.T,FSD.H,FSD.Current,FSD.Current_criterion);
 	 if (rhs1*rhs2 >= 0. ) {printf("\nInterval wrong\n");assert(false);}
-	 while ( fabs(delta) > 1.e-7 * Inout.kd )
+	 while ( fabs(delta) > 1.e-7 * FSD.kd )
 		{
-		 Inout.kd = 0.5 * (kd1+kd2);
+		 FSD.kd = 0.5 * (kd1+kd2);
 		 delta = kd2-kd1;
-		 CDE(Inout.kd);
-		 rhs = F(Inout.kd,Inout.n,Inout.T,Inout.H,Inout.Current,Inout.Current_criterion);
+		 CDE(FSD.kd);
+		 rhs = F(FSD.kd,FSD.n,FSD.T,FSD.H,FSD.Current,FSD.Current_criterion);
 		 if ( rhs*rhs1 < 0.)
-			{kd2 = Inout.kd ;}
+			{kd2 = FSD.kd ;}
 		 else
-			{kd1 = Inout.kd ; rhs1 = rhs;}
+			{kd1 = FSD.kd ; rhs1 = rhs;}
 		}
-	 Inout.kH = Inout.kd * Inout.H ;
+	 FSD.kH = FSD.kd * FSD.H ;
 	}
 
 //	Put in array ready for standard output routine
 
 // Diagnostic
 
- Inout.z[1] = Inout.kd;
- Inout.z[2] = Inout.kH;
+ FSD.z[1] = FSD.kd;
+ FSD.z[2] = FSD.kH;
 
- Inout.SU = 0.5*Inout.kH/pow(Inout.kd,3);
- printf("\n# Stokes-Ursell no.: %7.3f",Inout.SU);
- if( Inout.SU > 0.5)
-	{
-	printf(" > 1/2. Results are unreliable\n");
-	}
+ FSD.SU = 0.5*FSD.kH/pow(FSD.kd,3);
+ printf("\n# Stokes-Ursell no.: %7.3f",FSD.SU);
 
- e[1] = 0.5 * Inout.kH;
- for ( i=2 ; i<=Inout.n ; i++ ) e[i] = e[i-1] * e[1];
+ if( FSD.SU > 0.5)
+ {
+  printf(" > 1/2. Results are unreliable\n");
+ }
+
+ e[1] = 0.5 * FSD.kH;
+ for ( i=2 ; i<=FSD.n ; i++ ) e[i] = e[i-1] * e[1];
 
 // Calculate coefficients
 
- CDE(Inout.kd);
- zBY(Inout.kd,Inout.n,Inout.z,Inout.B,Inout.Y);
+ CDE(FSD.kd);
+ zBY(FSD.kd,FSD.n,FSD.z,FSD.B,FSD.Y);
 
- Inout.z[7] = C[0] + e[2]*C[2] + e[4] * C[4] + e[6] * C[6]; // ubar
- Inout.z[8] = - e[2]*D[2] - e[4]*D[4]- e[6]*D[6];
- Inout.z[9] = 0.5 * C[0]*C[0] + e[2]*E[2] + e[4] * E[4]+ e[6] * E[6];
+ FSD.z[7] = C[0] + e[2]*C[2] + e[4] * C[4] + e[6] * C[6]; // ubar
+ FSD.z[8] = - e[2]*D[2] - e[4]*D[4]- e[6]*D[6];
+ FSD.z[9] = 0.5 * C[0]*C[0] + e[2]*E[2] + e[4] * E[4]+ e[6] * E[6];
 
- if(Inout.Current_criterion==1)
+ if(FSD.Current_criterion==1)
 	{
-	 Inout.z[5] = Inout.Current*sqrt(Inout.kd);
-	 Inout.z[4] = Inout.z[7] + Inout.z[5];
-	 Inout.z[6] = Inout.z[4] + Inout.z[8]/Inout.kd - Inout.z[7];
+	 FSD.z[5] = FSD.Current*sqrt(FSD.kd);
+	 FSD.z[4] = FSD.z[7] + FSD.z[5];
+	 FSD.z[6] = FSD.z[4] + FSD.z[8]/FSD.kd - FSD.z[7];
 	}
 
- if(Inout.Current_criterion==2)
+ if(FSD.Current_criterion==2)
 	{
-	Inout.z[6] = Inout.Current*sqrt(Inout.kd);
-	Inout.z[4] = Inout.z[6] - Inout.z[8]/Inout.kd + Inout.z[7];
-	Inout.z[5] = Inout.z[4] - Inout.z[7];
+	 FSD.z[6] = FSD.Current*sqrt(FSD.kd);
+	 FSD.z[4] = FSD.z[6] - FSD.z[8]/FSD.kd + FSD.z[7];
+	 FSD.z[5] = FSD.z[4] - FSD.z[7];
 	}
 
- iff(Inout.Case,Wavelength) Inout.z[3] = 2*pi/Inout.z[4];
- iff(Inout.Case,Period) Inout.z[3] = Inout.T * sqrt(Inout.kd);
+ iff(FSD.Case,Wavelength) FSD.z[3] = 2*Fenton_pi/FSD.z[4];
+ iff(FSD.Case,Period) FSD.z[3] = FSD.T * sqrt(FSD.kd);
+ FSD.L = 2*Fenton_pi/FSD.z[1];
 
 }
 
@@ -138,7 +178,7 @@ double StokesClass::F(double kd,int Inoutn,double InoutT,double InoutH,double In
  double e2, rhs, kH, CC[4];
  kH = kd * InoutH ;
  e2 = 0.5*kH*0.5*kH;
- rhs = InoutCurrent * sqrt(kd) - 2.*pi/InoutT/sqrt(kd);
+ rhs = InoutCurrent * sqrt(kd) - 2.*Fenton_pi/InoutT/sqrt(kd);
  CC[0] = C[0];
  CC[1] = CC[2] = CC[3] = 0.;
 
