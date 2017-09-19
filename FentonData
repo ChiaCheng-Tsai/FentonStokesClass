@@ -1,0 +1,86 @@
+FentonS = Sech[2*h*k]
+FentonA[1, 1] = Csch[h*k]
+ 
+FentonA[2, 2] = (3*Sech[2*h*k]^2)/(2*(1 - Sech[2*h*k])^2)
+ 
+FentonA[3, 1] = (Csch[h*k]*(-4 - 20*Sech[2*h*k] + 10*Sech[2*h*k]^2 - 
+       13*Sech[2*h*k]^3))/(8*(1 - Sech[2*h*k])^3)
+ 
+FentonA[3, 3] = (Csch[h*k]*(-2*Sech[2*h*k]^2 + 11*Sech[2*h*k]^3))/
+     (8*(1 - Sech[2*h*k])^3)
+ 
+FentonA[4, 2] = (12*Sech[2*h*k] - 14*Sech[2*h*k]^2 - 264*Sech[2*h*k]^3 - 
+      45*Sech[2*h*k]^4 - 13*Sech[2*h*k]^5)/(24*(1 - Sech[2*h*k])^5)
+ 
+FentonA[4, 4] = (10*Sech[2*h*k]^3 - 174*Sech[2*h*k]^4 + 291*Sech[2*h*k]^5 + 
+      278*Sech[2*h*k]^6)/(48*(1 - Sech[2*h*k])^5*(3 + 2*Sech[2*h*k]))
+ 
+FentonA[5, 1] = (Csch[h*k]*(-1184 + 32*Sech[2*h*k] + 13232*Sech[2*h*k]^2 + 
+       21712*Sech[2*h*k]^3 + 20940*Sech[2*h*k]^4 + 12554*Sech[2*h*k]^5 - 
+       500*Sech[2*h*k]^6 - 3341*Sech[2*h*k]^7 - 670*Sech[2*h*k]^8))/
+     (64*(1 - Sech[2*h*k])^6*(4 + Sech[2*h*k])*(3 + 2*Sech[2*h*k]))
+ 
+FentonA[5, 3] = (Csch[h*k]*(4*Sech[2*h*k] + 105*Sech[2*h*k]^2 + 
+       198*Sech[2*h*k]^3 - 1376*Sech[2*h*k]^4 - 1302*Sech[2*h*k]^5 - 
+       117*Sech[2*h*k]^6 + 58*Sech[2*h*k]^7))/(32*(1 - Sech[2*h*k])^6*
+      (3 + 2*Sech[2*h*k]))
+ 
+FentonA[5, 5] = (Csch[h*k]*(-6*Sech[2*h*k]^3 + 272*Sech[2*h*k]^4 - 
+       1552*Sech[2*h*k]^5 + 852*Sech[2*h*k]^6 + 2029*Sech[2*h*k]^7 + 
+       430*Sech[2*h*k]^8))/(64*(1 - Sech[2*h*k])^6*(4 + Sech[2*h*k])*
+      (3 + 2*Sech[2*h*k]))
+FentonB[1, 1] = 1
+ 
+FentonB[2, 2] = (Coth[h*k]*(1 + 2*Sech[2*h*k]))/(2*(1 - Sech[2*h*k]))
+ 
+FentonB[3, 1] = (-3*(1 + 3*Sech[2*h*k] + 3*Sech[2*h*k]^2 + 2*Sech[2*h*k]^3))/
+     (8*(1 - Sech[2*h*k])^3)
+ 
+FentonB[3, 3] = (3*(1 + 3*Sech[2*h*k] + 3*Sech[2*h*k]^2 + 2*Sech[2*h*k]^3))/
+     (8*(1 - Sech[2*h*k])^3)
+ 
+FentonB[4, 2] = (Coth[h*k]*(6 - 26*Sech[2*h*k] - 182*Sech[2*h*k]^2 - 
+       204*Sech[2*h*k]^3 - 25*Sech[2*h*k]^4 + 26*Sech[2*h*k]^5))/
+     (6*(1 - Sech[2*h*k])^4*(3 + 2*Sech[2*h*k]))
+ 
+FentonB[4, 4] = (Coth[h*k]*(24 + 92*Sech[2*h*k] + 122*Sech[2*h*k]^2 + 
+       66*Sech[2*h*k]^3 + 67*Sech[2*h*k]^4 + 34*Sech[2*h*k]^5))/
+     (24*(1 - Sech[2*h*k])^4*(3 + 2*Sech[2*h*k]))
+ 
+FentonB[5, 1] = (-9*(132 + 17*Sech[2*h*k] - 2216*Sech[2*h*k]^2 - 
+        5897*Sech[2*h*k]^3 - 6292*Sech[2*h*k]^4 - 2687*Sech[2*h*k]^5 + 
+        194*Sech[2*h*k]^6 + 467*Sech[2*h*k]^7 + 82*Sech[2*h*k]^8))/
+      (128*(1 - Sech[2*h*k])^6*(4 + Sech[2*h*k])*(3 + 2*Sech[2*h*k])) - 
+     (5*(300 + 1579*Sech[2*h*k] + 3176*Sech[2*h*k]^2 + 2949*Sech[2*h*k]^3 + 
+        1188*Sech[2*h*k]^4 + 675*Sech[2*h*k]^5 + 1326*Sech[2*h*k]^6 + 
+        827*Sech[2*h*k]^7 + 130*Sech[2*h*k]^8))/(384*(1 - Sech[2*h*k])^6*
+       (4 + Sech[2*h*k])*(3 + 2*Sech[2*h*k]))
+ 
+FentonB[5, 3] = (9*(132 + 17*Sech[2*h*k] - 2216*Sech[2*h*k]^2 - 
+       5897*Sech[2*h*k]^3 - 6292*Sech[2*h*k]^4 - 2687*Sech[2*h*k]^5 + 
+       194*Sech[2*h*k]^6 + 467*Sech[2*h*k]^7 + 82*Sech[2*h*k]^8))/
+     (128*(1 - Sech[2*h*k])^6*(4 + Sech[2*h*k])*(3 + 2*Sech[2*h*k]))
+ 
+FentonB[5, 5] = (5*(300 + 1579*Sech[2*h*k] + 3176*Sech[2*h*k]^2 + 
+       2949*Sech[2*h*k]^3 + 1188*Sech[2*h*k]^4 + 675*Sech[2*h*k]^5 + 
+       1326*Sech[2*h*k]^6 + 827*Sech[2*h*k]^7 + 130*Sech[2*h*k]^8))/
+     (384*(1 - Sech[2*h*k])^6*(4 + Sech[2*h*k])*(3 + 2*Sech[2*h*k]))
+FentonC[0] = Sqrt[Tanh[h*k]]
+ 
+FentonC[2] = ((2 + 7*Sech[2*h*k]^2)*Sqrt[Tanh[h*k]])/(4*(1 - Sech[2*h*k])^2)
+ 
+FentonC[4] = ((4 + 32*Sech[2*h*k] - 116*Sech[2*h*k]^2 - 400*Sech[2*h*k]^3 - 
+       71*Sech[2*h*k]^4 + 146*Sech[2*h*k]^5)*Sqrt[Tanh[h*k]])/
+     (32*(1 - Sech[2*h*k])^5)
+FentonD[2] = -Sqrt[Coth[h*k]]/2
+ 
+FentonD[4] = (Sqrt[Coth[h*k]]*(2 + 4*Sech[2*h*k] + Sech[2*h*k]^2 + 
+       2*Sech[2*h*k]^3))/(8*(1 - Sech[2*h*k])^3)
+FentonE[0] = 0
+ 
+FentonE[2] = ((2 + 2*Sech[2*h*k] + 5*Sech[2*h*k]^2)*Tanh[h*k])/
+     (4*(1 - Sech[2*h*k])^2)
+ 
+FentonE[4] = ((8 + 12*Sech[2*h*k] - 152*Sech[2*h*k]^2 - 308*Sech[2*h*k]^3 - 
+       42*Sech[2*h*k]^4 + 77*Sech[2*h*k]^5)*Tanh[h*k])/
+     (32*(1 - Sech[2*h*k])^5)
