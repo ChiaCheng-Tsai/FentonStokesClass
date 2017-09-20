@@ -28,8 +28,9 @@ class FourierStokesData
 // see Eq. (3.5) in Fenton (1999) for the definition of B
 // see page 363 in Fenton (1988) for the definition of Y
  public:
-  FourierStokesData(){};
+  FourierStokesData(){n=0;};
   ~FourierStokesData();
+  void Allocate_zBY();
   void Output(FILE *SolutionOutput);
   double Surface(double x);
   void Point(double X,double y,
@@ -45,6 +46,14 @@ FourierStokesData::~FourierStokesData()
  delete [] z;
  delete [] Y;
  delete [] B;
+}
+
+void FourierStokesData::Allocate_zBY()
+{
+ assert(n>0);
+ z = new double [2*n+10+1]; // +1 by Tsai
+ B = new double [n+1]; // +1 by Tsai
+ Y = new double [n+1]; // +1 by Tsai
 }
 
 void FourierStokesData::Output(FILE *SolutionOutput)

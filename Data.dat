@@ -1,4 +1,15 @@
 Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for Stokes and Fourier)
+0.3	H/d
+Wavelength	Measure of length: "Wavelength" or "Period"
+8  Value of that length: L/d or T(g/d)^1/2 respectively
+1		Current criterion (1 or 2)
+0.0		Current magnitude, (dimensionless) ubar/(gd)^1/2
+20		Number of Fourier components or Order of Stokes/cnoidal theory
+5		Number of height steps to reach H/d
+FINISH
+
+
+Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for Stokes and Fourier)
 0.20	H/d
 Period	Measure of length: "Wavelength" or "Period"
 3 	    Value of that length: L/d or T(g/d)^1/2 respectively
@@ -12,7 +23,7 @@ Le Mehaute Divoky & Lin, Fig. 8 (for Cnoidal and Fourier)
 0.492
 Period
 22.47
-2
+1
 0
 30	16
 3

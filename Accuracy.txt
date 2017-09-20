@@ -1,104 +1,39 @@
+
+
+5-order Stokes theory  5	 0.2670	  12.131	  1.#IO	137	-1.#IND0
+7-order Stokes theory  7	 0.2670	  12.131	25581662673931451000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000	137	-1.#IND0
+7-order Stokes theory  7	 0.2670	   8.000	7405597781155396300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000	147	-1.#IND0
+7-order Stokes theory  7	 0.3000	   8.000	7405597781155396300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000	147	-1.#IND0
+7-order Stokes theory  7	 0.3000	   8.000	7405597781155396300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000	147	-1.#IND0
+3-order Stokes theory  3	 0.3000	   8.000	  1.#IO	147	-1.#IND0
+3-order Stokes theory  3	 0.3000	   8.000	  1.#IO	147	-1.#IND0
+3-order Stokes theory  3	 0.3000	   8.000	  1.#IO	147	-1.#IND0
+3-order Stokes theory  3	 0.3000	   8.000	  1.#IO	147	-1.#IND0
+3-order Stokes theory  3	 0.3000	   8.000	  1.#IO	147	-1.#IND0
+3-order Stokes theory  3	 0.3000	   8.000	  1.#IO	147	-1.#IND0
+3-order Stokes theory  3	 0.3000	   8.000	  1.#IO	147	-1.#IND0
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
+3-order Stokes theory  3	 0.3000	   8.000	  0.243	 44	 0.16131
 7-order Stokes theory  7	 0.3000	   8.000	  0.243	 44	 0.15854
-Fourier 20	 0.3000	   8.000	  0.243	 44	 0.15830
-Fourier 20	 0.1999	   1.550	  0.006	 91	2887311050089.42240
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-155.66556
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	140.48034
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	140.48034
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	140.48034
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	140.48034
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier 20	 0.2000	   1.653	  0.007	 86	-101.23293
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	140.48034
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Fourier 20	 0.2000	   1.653	  0.007	 86	 0.06862
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	 0.06862
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	 0.06862
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	 0.06862
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Cnoidal  6	 0.2000	  -1.#IO	 -1.#IO	 -1	 1.#QNAN
-Cnoidal  6	 0.4920	  24.912	  3.867	 63	 0.33433
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Cnoidal 5th order theory with Aitken convergence enhancement  6	 0.2000	  -1.#IO	 -1.#IO	 -1	 1.#QNAN
-Cnoidal 5th order theory with Aitken convergence enhancement  6	 0.4920	  24.912	  3.867	 63	 0.33433
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-
-Fourier method with 20 terms in series 20	 0.0000	   0.000	  0.007	  1	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   0.000	  0.007	  1	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   0.000	  0.007	  1	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Cnoidal 5th order theory with Aitken convergence enhancement  6	 0.4920	  24.912	  3.867	 63	 0.33433
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.00000
-Fourier method with 15 terms in series 15	 0.0000	   1.653	  0.007	 86	 0.06862
-Fourier method with 15 terms in series 15	 0.0000	   1.653	  0.007	 86	 0.06862
-Fourier method with 15 terms in series 15	 0.0000	   1.653	  0.007	 86	 0.06862
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Fourier method with 15 terms in series 15	 0.0000	   1.653	  0.007	 86	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.06862
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.06862
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
-Fourier method with 20 terms in series 20	 0.0000	   1.653	  0.007	 86	 0.06862
-Cnoidal 5th order theory with Aitken convergence enhancement  6	 0.2000	  -1.#IO	 -1.#IO	 -1	 1.#QNAN
-Cnoidal 5th order theory with Aitken convergence enhancement  6	 0.4920	  24.912	  3.867	 63	 0.33433
-Fourier method with 30 terms in series 30	 0.0000	  24.908	  3.866	 63	 0.33200
-Fourier method with 30 terms in series 30	 0.4920	  24.908	  3.866	 63	 0.33200
-Cnoidal 5th order theory with Aitken convergence enhancement  6	 0.4920	  24.912	  3.867	 63	 0.33433
-Fourier method with 30 terms in series 30	 0.4920	  24.908	  3.866	 63	 0.33200
-Fourier method with 20 terms in series 20	 0.2000	   1.653	  0.007	 86	 0.06862
-7-order Stokes theory  7	 0.2000	   1.654	  0.007	 85	 0.06879
+7-order Stokes theory  7	 0.3000	   8.000	  0.243	 44	 0.15854
+7-order Stokes theory  7	 0.3000	   8.000	  0.243	 44	 0.15854
+Fourier method with 7 terms in series  7	 0.3000	   8.000	  0.243	 44	 0.15830
+Fourier method with 20 terms in series 20	 0.3000	   8.000	  0.243	 44	 0.15830
+Fourier method with 20 terms in series 20	 0.3000	   8.000	  0.243	 44	 0.15830
+Fourier method with 20 terms in series 20	 0.3000	   8.000	  0.243	 44	 0.15830
+7-order Stokes theory  7	 0.3000	   8.000	  0.243	 44	 0.15854
+Fourier method with 20 terms in series 20	 0.3000	   8.000	  0.243	 44	 0.15830
+Fourier method with 20 terms in series 20	 0.3000	   8.000	  0.243	 44	 0.15830
+Fourier method with 20 terms in series 20	 0.3000	   8.000	  0.243	 44	 0.15830
+7-order Stokes theory  7	 0.3000	   8.000	  0.243	 44	 0.15854
+Cnoidal 5th order theory with Aitken convergence enhancement  6	 0.3000	   8.000	  0.243	 44	 0.15877

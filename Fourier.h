@@ -88,13 +88,7 @@ FourierClass::FourierClass(FentonInout<FourierClass> & Inout)
  dhe=Inout.Height/Inout.nstep;
  dho=Inout.MaxH/Inout.nstep;
 
- FSD.z = new double[num+1];
- FSD.Y = new double[FSD.n+1]; // bug fixed by Tsai
- FSD.B = new double[FSD.n+1];
-
-// see page 359 in Fenton (1988) for the definition of z and B
-// see Eq. (3.5) in Fenton (1999) for the definition of B
-// see page 363 in Fenton (1988) for the definition of Y
+ FSD.Allocate_zBY();
 
  rhs1 = new double[num+1];
  rhs2 = new double[num+1];

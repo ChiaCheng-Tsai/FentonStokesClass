@@ -77,12 +77,7 @@ StokesClass::StokesClass(FentonInout<StokesClass> & Inout)
  sprintf(Inout.Method, "%d-order Stokes theory", FSD.n);
  printf( "\n# Solution by %d-order Stokes theory", FSD.n);
 
- FSD.z = new double [2*FSD.n+10+1]; // +1 by Tsai
- FSD.Y = new double [FSD.n+1]; // +1 by Tsai
- FSD.B = new double [FSD.n+1]; // +1 by Tsai
-// see page 359 in Fenton (1988) for the definition of z and B
-// see Eq. (3.5) in Fenton (1999) for the definition of B
-// see page 363 in Fenton (1988) for the definition of Y
+ FSD.Allocate_zBY();
 
  FSD.H = Inout.MaxH;
 
@@ -123,7 +118,7 @@ StokesClass::StokesClass(FentonInout<StokesClass> & Inout)
 	 FSD.kH = FSD.kd * FSD.H ;
 	}
 
-//	Put in array ready for standard output routine
+// Put in array ready for standard output routine
 
 // Diagnostic
 
