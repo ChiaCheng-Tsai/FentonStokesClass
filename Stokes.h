@@ -23,6 +23,7 @@ class StokesClass
  public:
   StokesClass(){};
   StokesClass(FentonInout<StokesClass> & );
+  StokesClass& operator=(const StokesClass&);
   double F(double kd,int Inoutn,double InoutT,double InoutH,double InoutCurrent,int InoutCurrent_criterion);
   void CDE(double kd);
   void zBY(double kd,int Inoutn,double* Inoutz,double* InoutB,double* InoutY);
@@ -65,6 +66,7 @@ StokesClass::StokesClass(FentonInout<StokesClass> & Inout)
 
  FSD.Current=Inout.Current;
  FSD.Current_criterion=Inout.Current_criterion;
+
  FSD.H=Inout.H;
  FSD.T=Inout.T;
  FSD.L=Inout.L;
@@ -124,7 +126,6 @@ StokesClass::StokesClass(FentonInout<StokesClass> & Inout)
 
  FSD.z[1] = FSD.kd;
  FSD.z[2] = FSD.kH;
-
  FSD.SU = 0.5*FSD.kH/pow(FSD.kd,3);
  printf("\n# Stokes-Ursell no.: %7.3f",FSD.SU);
 
@@ -141,9 +142,24 @@ StokesClass::StokesClass(FentonInout<StokesClass> & Inout)
  CDE(FSD.kd);
  zBY(FSD.kd,FSD.n,FSD.z,FSD.B,FSD.Y);
 
- FSD.z[7] = C[0] + e[2]*C[2] + e[4] * C[4] + e[6] * C[6]; // ubar
- FSD.z[8] = - e[2]*D[2] - e[4]*D[4]- e[6]*D[6];
- FSD.z[9] = 0.5 * C[0]*C[0] + e[2]*E[2] + e[4] * E[4]+ e[6] * E[6];
+ if(FSD.n<=3)
+ {
+  FSD.z[7] = C[0] + e[2]*C[2]; // ubar
+  FSD.z[8] = - e[2]*D[2];
+  FSD.z[9] = 0.5 * C[0]*C[0] + e[2]*E[2];
+ }
+ else if(FSD.n<=5)
+ {
+  FSD.z[7] = C[0] + e[2]*C[2] + e[4] * C[4]; // ubar
+  FSD.z[8] = - e[2]*D[2] - e[4]*D[4];
+  FSD.z[9] = 0.5 * C[0]*C[0] + e[2]*E[2] + e[4] * E[4];
+ }
+ else if(FSD.n<=7)
+ {
+  FSD.z[7] = C[0] + e[2]*C[2] + e[4] * C[4] + e[6] * C[6]; // ubar
+  FSD.z[8] = - e[2]*D[2] - e[4]*D[4]- e[6]*D[6];
+  FSD.z[9] = 0.5 * C[0]*C[0] + e[2]*E[2] + e[4] * E[4]+ e[6] * E[6];
+ }
 
  if(FSD.Current_criterion==1)
 	{
@@ -163,6 +179,26 @@ StokesClass::StokesClass(FentonInout<StokesClass> & Inout)
  iff(FSD.Case,Period) FSD.z[3] = FSD.T * sqrt(FSD.kd);
  FSD.L = 2*Fenton_pi/FSD.z[1];
 
+}
+
+StokesClass& StokesClass::operator=(const StokesClass& sc)
+{
+ if(this==&sc)
+  return *this;
+ else
+ {
+  int i;
+
+  for(i=0;i<8;i++)
+  {
+   C[i]=sc.C[i];
+   D[i]=sc.D[i];
+   E[i]=sc.E[i];
+   e[i]=sc.e[i];
+  }
+  FSD=sc.FSD;
+  return *this;
+ }
 }
 
 // Evaluates dispersion relation - used in iterative solution for wavelength

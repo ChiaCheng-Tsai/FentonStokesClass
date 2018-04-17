@@ -11,7 +11,7 @@
 				<Option output="./Stokes" prefix_auto="1" extension_auto="1" />
 				<Option object_output="./obj" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="gnu_gcc_compiler_64" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
@@ -36,6 +36,18 @@
 				<Option object_output="./obj" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Stokes 5">
+				<Option output="./Stokes5" prefix_auto="1" extension_auto="1" />
+				<Option object_output="./obj" />
+				<Option type="1" />
+				<Option compiler="gnu_gcc_compiler_32" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
@@ -71,6 +83,9 @@
 		<Unit filename="FentonSolve.h">
 			<Option target="Fourier" />
 		</Unit>
+		<Unit filename="Figures(default).plt">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Flowfield(Cnoidal).res">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -78,6 +93,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Flowfield(Stokes).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Flowfield(Stokes5).res">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Fourier.cpp">
@@ -89,6 +107,7 @@
 		<Unit filename="FourierStokesData.h">
 			<Option target="Stokes" />
 			<Option target="Fourier" />
+			<Option target="Stokes 5" />
 		</Unit>
 		<Unit filename="Points.dat">
 			<Option target="&lt;{~None~}&gt;" />
@@ -102,11 +121,18 @@
 		<Unit filename="Solution(Stokes).res">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="Solution(Stokes5).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Stokes.cpp">
 			<Option target="Stokes" />
 		</Unit>
 		<Unit filename="Stokes.h">
 			<Option target="Stokes" />
+			<Option target="Stokes 5" />
+		</Unit>
+		<Unit filename="Stokes5.cpp">
+			<Option target="Stokes 5" />
 		</Unit>
 		<Unit filename="Surface(Cnoidal).res">
 			<Option target="&lt;{~None~}&gt;" />
@@ -115,6 +141,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Surface(Stokes).res">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="Surface(Stokes5).res">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>

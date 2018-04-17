@@ -5,7 +5,6 @@
 int main()
 {
  FentonInout<CnoidalClass> Inout(CnoidalSolution,(char *)"Data.dat",(char *)"Points.dat");
- Inout.Solve();
  Inout.Output((char *)"Surface(Cnoidal).res",(char *)"Flowfield(Cnoidal).res",(char *)"Solution(Cnoidal).res",(char *)"Accuracy.txt");
 
  printf("\nTouch key to continue "); getch();

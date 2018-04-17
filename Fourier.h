@@ -27,9 +27,11 @@ class FourierClass
   double **sol;
   FourierStokesData FSD;
  public:
-  FourierClass(){};
+  FourierClass(){num=0;Allocate_Mem();};
   FourierClass(FentonInout<FourierClass> & );
+  FourierClass& operator=(const FourierClass&);
   ~FourierClass();
+  void Allocate_Mem();
   void init(int Inoutn,char* InoutCase,double* Inoutz,double InoutCurrent,int InoutCurrent_criterion);
   double Eqns(double *rhs,int Inoutn,char* InoutCase,double* Inoutz,double InoutCurrent,int InoutCurrent_criterion);
   double Newton(int Inoutn,char* InoutCase,double* Inoutz,double InoutCurrent,int InoutCurrent_criterion);
@@ -89,17 +91,7 @@ FourierClass::FourierClass(FentonInout<FourierClass> & Inout)
  dho=Inout.MaxH/Inout.nstep;
 
  FSD.Allocate_zBY();
-
- rhs1 = new double[num+1];
- rhs2 = new double[num+1];
- coeff = new double[num+1];
- cosa = new double[2*FSD.n+1];
- sina = new double[2*FSD.n+1];
- FourierTanh = new double[FSD.n+1];
-
- sol = new double* [num+1];
- for(i=0;i<num+1;i++)
-  sol[i] = new double [3];
+ Allocate_Mem();
 
 //	Commence stepping through steps in wave height
  for ( ns = 1 ; ns <= Inout.nstep ; ns++ )
@@ -170,12 +162,79 @@ FourierClass::FourierClass(FentonInout<FourierClass> & Inout)
 
 }
 
+void FourierClass::Allocate_Mem()
+{
+ int i;
+ rhs1 = new double[num+1];
+ rhs2 = new double[num+1];
+ coeff = new double[num+1];
+ cosa = new double[2*FSD.n+1];
+ sina = new double[2*FSD.n+1];
+ FourierTanh = new double[FSD.n+1];
+
+ sol = new double* [num+1];
+ for(i=0;i<num+1;i++)
+  sol[i] = new double [3];
+}
+
+FourierClass& FourierClass::operator=(const FourierClass& fc)
+{
+ if(this==&fc)
+  return *this;
+ else
+ {
+  int i,j;
+
+  delete [] rhs1;
+  delete [] rhs2;
+  delete [] coeff;
+  delete [] cosa;
+  delete [] sina;
+  delete [] FourierTanh;
+
+  for(i=0;i<num+1;i++)
+   delete [] sol[i];
+  delete [] sol;
+
+  height=fc.height;
+  Hoverd=fc.Hoverd;
+  criter=fc.criter;
+  num=fc.num;
+  FSD=fc.FSD;
+
+  Allocate_Mem();
+
+  for(i=0;i<num+1;i++)
+  {
+   rhs1[i]=fc.rhs1[i];
+   rhs2[i]=fc.rhs2[i];
+   coeff[i]=fc.coeff[i];
+
+   for(j=0;j<3;j++)
+    sol[i][j]=fc.sol[i][j];
+  }
+
+  for(i=0;i<2*FSD.n+1;i++)
+  {
+   cosa[i]=fc.cosa[i];
+   sina[i]=fc.sina[i];
+  }
+
+  for(i=0;i<FSD.n+1;i++)
+   FourierTanh[i]=fc.FourierTanh[i];
+
+  return *this;
+ }
+}
+
 // **************************************************
 // CALCULATE INITIAL SOLUTION FROM LINEAR WAVE THEORY
 // **************************************************
 
 FourierClass::~FourierClass()
 {
+ int i;
+
  delete [] rhs1;
  delete [] rhs2;
  delete [] coeff;
@@ -183,8 +242,9 @@ FourierClass::~FourierClass()
  delete [] sina;
  delete [] FourierTanh;
 
- for(int i=0;i<num+1;i++)
+ for(i=0;i<num+1;i++)
   delete [] sol[i];
+
  delete [] sol;
 }
 

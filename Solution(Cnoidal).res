@@ -1,4 +1,4 @@
-//  Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for Stokes and FourWavelength
+//  Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for LtE paper)
 
 Height/Depth; 0.300  Length/Depth;   8.000
 Current criterion; 1  Magnitude; 0.000

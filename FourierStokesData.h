@@ -28,8 +28,10 @@ class FourierStokesData
 // see Eq. (3.5) in Fenton (1999) for the definition of B
 // see page 363 in Fenton (1988) for the definition of Y
  public:
-  FourierStokesData(){n=0;};
+  FourierStokesData(){n=0;Allocate_zBY();};
+  FourierStokesData(const FourierStokesData& );
   ~FourierStokesData();
+  FourierStokesData& operator=(const FourierStokesData&);
   void Allocate_zBY();
   void Output(FILE *SolutionOutput);
   double Surface(double x);
@@ -41,16 +43,89 @@ class FourierStokesData
   friend class FourierClass;
 };
 
+FourierStokesData::FourierStokesData(const FourierStokesData& fsd):Current(fsd.Current),H(fsd.H),T(fsd.T),L(fsd.L),Current_criterion(fsd.Current_criterion),n(fsd.n),kd(fsd.kd),kh(fsd.kh),kH(fsd.kH),SU(fsd.SU)
+{
+
+ int i;
+
+ for(i=0;i<100;i++)
+ {
+  Title[i]=fsd.Title[i];
+  Method[i]=fsd.Method[i];
+ }
+
+ for(i=0;i<20;i++)
+  Case[i]=fsd.Case[i];
+
+ Allocate_zBY();
+
+ for(i=0;i<2*n+10+1;i++)
+  z[i]=fsd.z[i];
+
+ for(i=0;i<n+1;i++)
+ {
+  B[i]=fsd.B[i];
+  Y[i]=fsd.Y[i];
+ }
+}
+
+FourierStokesData& FourierStokesData::operator=(const FourierStokesData& fsd)
+{
+ if(this==&fsd)
+  return *this;
+ else
+ {
+  int i;
+
+  for(i=0;i<100;i++)
+  {
+   Title[i]=fsd.Title[i];
+   Method[i]=fsd.Method[i];
+  }
+
+  for(i=0;i<20;i++)
+   Case[i]=fsd.Case[i];
+
+  delete [] z;
+  delete [] B;
+  delete [] Y;
+
+  Current=fsd.Current;
+  H=fsd.H;
+  T=fsd.T;
+  L=fsd.L;
+  Current_criterion=fsd.Current_criterion;
+  n=fsd.n;
+  kd=fsd.kd;
+  kh=fsd.kh;
+  kH=fsd.kH;
+  SU=fsd.SU;
+
+  Allocate_zBY();
+
+  for(i=0;i<2*n+10+1;i++)
+   z[i]=fsd.z[i];
+
+  for(i=0;i<n+1;i++)
+  {
+   B[i]=fsd.B[i];
+   Y[i]=fsd.Y[i];
+  }
+
+  return *this;
+ }
+}
+
 FourierStokesData::~FourierStokesData()
 {
  delete [] z;
- delete [] Y;
  delete [] B;
+ delete [] Y;
 }
 
 void FourierStokesData::Allocate_zBY()
 {
- assert(n>0);
+ assert(n>=0);
  z = new double [2*n+10+1]; // +1 by Tsai
  B = new double [n+1]; // +1 by Tsai
  Y = new double [n+1]; // +1 by Tsai

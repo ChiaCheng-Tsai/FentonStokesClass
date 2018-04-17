@@ -1,4 +1,4 @@
-//  Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for Stokes and FourWavelength
+//  Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for LtE paper)
 
 # Cnoidal Theory - Cnoidal 5th order theory with Aitken convergence enhancement
 # Velocity profiles

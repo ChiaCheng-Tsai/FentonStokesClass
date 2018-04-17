@@ -80,6 +80,7 @@ FentonInout<SolutionClass>::FentonInout(int modeltype,char* data_file,char* conv
 
  monitor = stdout;
  assert(Read_data()==1);
+ Solve();
 }
 
 template<typename SolutionClass>
@@ -94,6 +95,7 @@ FentonInout<SolutionClass>::FentonInout(int modeltype,char* data_file,char* poin
 
  monitor = stdout;
  assert(Read_data()==1);
+ Solve();
 }
 
 template<typename SolutionClass>
@@ -208,8 +210,7 @@ void FentonInout<SolutionClass>::Title_block(FILE* file)
  if ( ModelType==FourierSolution || ModelType==StokesSolution )
  {
   fprintf(file,"# %s", Title);
-  fprintf(file,"\n\n# Height/Depth:%6.3f", SolutionObject.Get_z(2)
-         / SolutionObject.Get_z(1));
+  fprintf(file,"\n\n# Height/Depth:%6.3f", SolutionObject.Get_z(2)/ SolutionObject.Get_z(1));
   fprintf(file,"  Length/Depth:%7.2f", 2*Fenton_pi/SolutionObject.Get_z(1));
   fprintf(file,"  Dimensionless Period T*sqrt(g/d):%7.2f", SolutionObject.Get_z(3)/sqrt(SolutionObject.Get_z(1)));
   // Highest wave - eqn (32) of Fenton (1990)
@@ -445,6 +446,7 @@ void FentonInout<SolutionClass>::Output(char* elevation_file,char* flowfield_fil
  {
   assert(false);
  }
+
 }
 
 #endif

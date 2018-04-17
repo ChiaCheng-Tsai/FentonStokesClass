@@ -1,58 +1,58 @@
-# Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for Stokes and FourWavelength
+# Tsai's modification from Fenton 1985 Stokes paper with notional H/d and current (for LtE paper)
 
-# Height/Depth: 0.300  Length/Depth:   8.00  Dimensionless Period T*sqrt(g/d):   8.52
-# (A height of  44% of the maximum of H/d = 0.678 for this length)
+# Height/Depth: 0.450  Length/Depth:   8.00  Dimensionless Period T*sqrt(g/d):   8.26
+# (A height of  66% of the maximum of H/d = 0.678 for this length)
 # Current criterion: Euler,  Dimensionless value: 0.000
 
 # Solution by Fourier method with 20 terms in series
 
-# Stokes-Ursell parameter (SU):   0.243
+# Stokes-Ursell parameter (SU):   0.365
 
 # Integral quantities - notation from Fenton (1988)
 # (1) Quantity, (2) symbol, solution non-dimensionalised by (3) g & wavenumber, and (4) g & mean depth
 
 # Water depth                        (d)	 0.7854	 1.0000
 # Wave length                   (lambda)	 6.2832	 8.0000
-# Wave height                        (H)	 0.2356	 0.3000
-# Wave period                      (tau)	 7.5465	 8.5153
-# Wave speed                         (c)	 0.8326	 0.9395
-# Eulerian current                 (u1_)	-0.0000	-0.0000
-# Stokes current                   (u2_)	 0.0103	 0.0116
-# Mean fluid speed in frame of wave (U_)	 0.8326	 0.9395
-# Volume flux due to waves           (q)	 0.0081	 0.0116
-# Bernoulli constant                 (r)	 0.3492	 0.4446
-# Volume flux                        (Q)	 0.6459	 0.9279
-# Bernoulli constant                 (R)	 1.1346	 1.4446
-# Momentum flux                      (S)	 0.8472	 1.3734
-# Impulse                            (I)	 0.0081	 0.0116
-# Kinetic energy                     (T)	 0.0034	 0.0054
-# Potential energy                   (V)	 0.0033	 0.0053
-# Mean square of bed velocity     (ub2_)	 0.0052	 0.0066
-# Radiation stress                 (Sxx)	 0.0077	 0.0125
-# Wave power                         (F)	 0.0047	 0.0085
+# Wave height                        (H)	 0.3534	 0.4500
+# Wave period                      (tau)	 7.3202	 8.2599
+# Wave speed                         (c)	 0.8583	 0.9685
+# Eulerian current                 (u1_)	 0.0000	 0.0000
+# Stokes current                   (u2_)	 0.0213	 0.0240
+# Mean fluid speed in frame of wave (U_)	 0.8583	 0.9685
+# Volume flux due to waves           (q)	 0.0167	 0.0240
+# Bernoulli constant                 (r)	 0.3732	 0.4752
+# Volume flux                        (Q)	 0.6574	 0.9445
+# Bernoulli constant                 (R)	 1.1586	 1.4752
+# Momentum flux                      (S)	 0.8744	 1.4175
+# Impulse                            (I)	 0.0167	 0.0240
+# Kinetic energy                     (T)	 0.0072	 0.0116
+# Potential energy                   (V)	 0.0068	 0.0110
+# Mean square of bed velocity     (ub2_)	 0.0097	 0.0123
+# Radiation stress                 (Sxx)	 0.0160	 0.0260
+# Wave power                         (F)	 0.0102	 0.0187
 
 # Dimensionless coefficients in Fourier series
 # Potential/Streamfn	Surface elevations
 # j, B[j], & E[j], j=1..N
 
- 1	 1.3372527e-001	 1.1060569e-001
- 2	 1.5944230e-002	 2.7800975e-002
- 3	 1.5073329e-003	 6.6573116e-003
- 4	 5.7889960e-005	 1.7363711e-003
- 5	-1.0718677e-005	 4.9366487e-004
- 6	-2.1274922e-006	 1.4940635e-004
- 7	-4.1243669e-008	 4.7220809e-005
- 8	 4.7648086e-008	 1.5398930e-005
- 9	 9.0191945e-009	 5.1422816e-006
-10	 2.6877502e-010	 1.7495886e-006
-11	-1.9258607e-010	 6.0433617e-007
-12	-3.8321418e-011	 2.1136823e-007
-13	-7.1625954e-013	 7.4705220e-008
-14	 1.0323032e-012	 2.6640292e-008
-15	 2.0128427e-013	 9.5737459e-009
-16	 3.4630938e-015	 3.4645392e-009
-17	-5.6215050e-015	 1.2635392e-009
-18	-1.0874514e-015	 4.6964705e-010
-19	-5.3457846e-018	 1.9259961e-010
-20	 3.3531578e-017	 1.2505971e-010
+ 1	 1.8143517e-001	 1.5372070e-001
+ 2	 3.0565631e-002	 5.4632283e-002
+ 3	 4.4283290e-003	 1.9049744e-002
+ 4	 4.0077429e-004	 7.3216159e-003
+ 5	-5.8894356e-006	 3.0815551e-003
+ 6	-6.7652782e-006	 1.3834917e-003
+ 7	 4.5772957e-007	 6.4953628e-004
+ 8	 7.4423787e-007	 3.1496985e-004
+ 9	 2.2611304e-007	 1.5652213e-004
+10	 3.4589833e-008	 7.9295117e-005
+11	 1.0947026e-009	 4.0801135e-005
+12	-4.9859026e-010	 2.1265588e-005
+13	 7.2412581e-011	 1.1204632e-005
+14	 1.0654067e-010	 5.9600546e-006
+15	 3.7491684e-011	 3.1993557e-006
+16	 7.0909070e-012	 1.7363309e-006
+17	 5.7784748e-013	 9.6072119e-007
+18	-2.1717053e-014	 5.5708138e-007
+19	 2.9903113e-014	 3.6461990e-007
+20	 2.2353992e-014	 3.0783123e-007
 
