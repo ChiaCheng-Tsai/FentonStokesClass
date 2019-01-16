@@ -1,0 +1,26 @@
+##### Language
+# C/C++
+*.c
+*.C
+*.cpp
+*.cc
+*.c++
+*.cxx
+*.cppm
+*.cxxm
+*.c++m
+*.h
+*.H
+*.hh
+*.hpp
+*.h++
+*.hxx
+*.ii
+*.ixx
+*.ipp
+*.inl
+*.txx
+*.tpp
+*.tpl
+*.txx
+*.txx
